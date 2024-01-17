@@ -2,8 +2,9 @@
 @section('title', 'Home')
 
 @section('content')
-    <main>
-      <h3 class="text-red-500">Home page</h3>
+    <main class="w-full h-screen">
+    <h1>Map</h1>
+    <div id="map" class="w-full h-full"></div>
     </main>
 @endsection
 
