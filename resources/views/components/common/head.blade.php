@@ -7,6 +7,7 @@
         <title>@yield('title')</title>
 
         @vite('resources/css/app.css')
+        @vite('resources/js/index.js')
     </head>
     <body class="antialiased">
       <div class="main">
