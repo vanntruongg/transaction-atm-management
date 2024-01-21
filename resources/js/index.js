@@ -5,8 +5,6 @@ import L from "leaflet";
 
 const divElement = document.getElementById("map");
 
-console.log(divElement);
-
 //  ctu
 const lat = 10.029939;
 const lng = 105.76804;

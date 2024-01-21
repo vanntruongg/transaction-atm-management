@@ -1,10 +1,14 @@
 @extends('layout.main')
-@section('title', 'Home')
-
 @section('content')
-    <main class="w-full h-screen">
-    <h1>Map</h1>
-    <div id="map" class="w-full h-full"></div>
+    <main class="pt-16 w-full h-full grid grid-cols-12 gap-8">
+        <div class="col-span-3 border left">
+            @component('components.sidebar')
+            @endcomponent
+        </div>
+        <div class="col-span-9">
+            @component('components.map')
+            @endcomponent
+        </div>
     </main>
 @endsection
 

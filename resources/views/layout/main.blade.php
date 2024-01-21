@@ -1,10 +1,12 @@
-@component('components.common.head')
-    
-@endcomponent
+@extends('components.head')
+@section('title', 'Trang chủ')
 
+
+@component('components.header')
+@endcomponent
 
 @yield('content')
 
-@component('components.common.footer')
-    
-@endcomponent
+{{-- @component('components.footer')
+@endcomponent --}}
+  

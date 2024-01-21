@@ -9,9 +9,4 @@
         @vite('resources/css/app.css')
         @vite('resources/js/index.js')
     </head>
-    <body class="antialiased">
-      <div class="main">
-        @component('components.common.header')
-            
-        @endcomponent
-      </div>
+    <body class="antialiased h-screen">
