@@ -1,9 +1,14 @@
 @extends('layout.main')
-@section('title', 'Home')
-
 @section('content')
-    <main>
-      <h3 class="text-red-500">Home page</h3>
+    <main class="pt-16 w-full h-full grid grid-cols-12 gap-8">
+        <div class="col-span-3 border left">
+            @component('components.sidebar')
+            @endcomponent
+        </div>
+        <div class="col-span-9">
+            @component('components.map')
+            @endcomponent
+        </div>
     </main>
 @endsection
 
