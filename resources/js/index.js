@@ -1,7 +1,7 @@
 import "../../node_modules/leaflet/dist/leaflet";
 import "../../node_modules/leaflet/dist/leaflet.css";
 
-import L, { icon } from "leaflet";
+import L from "leaflet";
 
 const divElement = document.getElementById("map");
 
@@ -20,14 +20,3 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").openPopup();
-// abc
-//pvcombank 10.02580439585616, 105.77510259173526
-
-const latlng = [
-    10.02580439585616, 105.77510259173526
-]
-
-L.marker(latlng).addTo(map).bindPopup("PVComBank").openPopup();
-//test 10.0354,105.774
-const latIng1 = [10.0354,105.774]
-L.marker(latIng1).addTo(map).bindPopup("TesComBank").openPopup();
