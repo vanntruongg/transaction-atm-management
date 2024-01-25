@@ -1,6 +1,9 @@
-import "../../node_modules/leaflet/dist/leaflet";
-import "../../node_modules/leaflet/dist/leaflet.css";
+import "leaflet/dist/leaflet";
+import "leaflet/dist/leaflet.css";
+import "leaflet-control-geocoder/dist/Control.Geocoder.css";
+import "leaflet/dist/images/marker-icon.png";
 
+import "leaflet-control-geocoder";
 import L from "leaflet";
 
 const divElement = document.getElementById("map");
@@ -20,3 +23,25 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").openPopup();
+L.Control.geocoder().addTo(map);
+
+// menu sidebar
+const menuSidebar = document.getElementById("menu-sidebar");
+const sidebar = document.getElementById("sidebar");
+const divMap = document.getElementById("divMap");
+
+menuSidebar.addEventListener("click", () => {
+    menuSidebar.classList.toggle("active");
+
+    if (menuSidebar.classList.contains("active")) {
+        sidebar.classList.remove("w-[5%]");
+        divMap.classList.remove("w-[95%]");
+        sidebar.classList.add("w-[20%]");
+        divMap.classList.add("w-[80%]");
+    } else {
+        sidebar.classList.add("w-[5%]");
+        divMap.classList.add("w-[95%]");
+        sidebar.classList.remove("w-[20%]");
+        divMap.classList.remove("w-[80%]");
+    }
+});

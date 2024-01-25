@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#menu-sidebar.active .menu__sidebar--item:nth-child(1) {
+    transform: rotate(45deg) translate(2px, 6px);
+}
+
+#menu-sidebar.active .menu__sidebar--item:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-sidebar.active .menu__sidebar--item:nth-child(3) {
+    transform: rotate(-45deg) translate(2px, -6px);
+}
