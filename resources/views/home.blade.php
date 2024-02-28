@@ -9,6 +9,14 @@
             @component('components.map')
             @endcomponent
         </div>
+        <div id="addBankLocation" class="">
+            @component('components.addBankLocation')
+            @endcomponent
+        </div>
+        <div id="addTransactionLocation" class="">
+            @component('components.addTransactionLocation')
+            @endcomponent
+        </div>
     </main>
 @endsection
 

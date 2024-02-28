@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AddBankController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+
+Route::get('/get-bank', 'App\Http\Controllers\AddBankController@getBank' );
+Route::get('/get-xp', 'App\Http\Controllers\AddBankController@getXP');
+
