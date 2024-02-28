@@ -20,5 +20,4 @@ Route::get('/', function () {
 
 
 Route::get('/get-bank', 'App\Http\Controllers\AddBankController@getBank' );
-Route::get('/get-xp', 'App\Http\Controllers\AddBankController@getXP');
 
