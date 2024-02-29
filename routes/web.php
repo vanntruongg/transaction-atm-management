@@ -20,11 +20,8 @@ Route::get('/', function () {
 
 
 Route::get('/get-bank', 'App\Http\Controllers\AddBankController@getBank' );
-<<<<<<< HEAD
 Route::post('create-bank', [AddBankController::class, 'createBank'])->name('createBank');
 Route::post('create-transaction', [AddBankController::class, 'createTransaction'])->name('createTransaction');
 
 Route::get('/get-xp', 'App\Http\Controllers\AddBankController@getXP');  
-=======
->>>>>>> 16d45f9e728c26221da04f5766cf0f3b820f0030
 
