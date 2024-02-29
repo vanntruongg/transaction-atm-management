@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AddBankController;
 
 use App\Http\Controllers\TestController;
 
@@ -19,13 +20,19 @@ Route::get('/', function () {
     return view('home');
 });
 
+
+Route::get('/get-bank', 'App\Http\Controllers\AddBankController@getBank' );
+Route::post('create-bank', [AddBankController::class, 'createBank'])->name('createBank');
+Route::post('create-transaction', [AddBankController::class, 'createTransaction'])->name('createTransaction');
+
+Route::get('/get-xp', 'App\Http\Controllers\AddBankController@getXP');  
+=======
 // Route::get('product/search-advance', 'ProductController@search');
 // Route::post('product/search-advance', 'ProductController@getProductSearch');
 
 // Route::get('/search', 'HomeController@search');
 // Route::post('/search', 'HomeController@searchFullText')->name('search');
 
-=======
 Route::get('/test', [TestController::class, 'index'])->name('test');
 
 Route::get('/testjson', [TestController::class, 'testjson'])->name('testjson');
