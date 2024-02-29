@@ -19,6 +19,13 @@ Route::get('/', function () {
     return view('home');
 });
 
+// Route::get('product/search-advance', 'ProductController@search');
+// Route::post('product/search-advance', 'ProductController@getProductSearch');
+
+// Route::get('/search', 'HomeController@search');
+// Route::post('/search', 'HomeController@searchFullText')->name('search');
+
+=======
 Route::get('/test', [TestController::class, 'index'])->name('test');
 
 Route::get('/testjson', [TestController::class, 'testjson'])->name('testjson');
