@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TruATMController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+// Route::get('/filter', [TruATMController::class, 'getPageFilter']);
+Route::get('/listbank', [TruATMController::class, 'getATM']);
+Route::get('/pagefilter', [TruATMController::class, 'getPageFilter']);
+Route::get('/listpgd', [TruATMController::class, 'getPGD']);
