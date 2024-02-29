@@ -17,6 +17,10 @@
             @component('components.addTransactionLocation')
             @endcomponent
         </div>
+        <div id="addATM"class="">
+            @component('components.addATM')
+            @endcomponent
+        </div>
     </main>
 @endsection
 

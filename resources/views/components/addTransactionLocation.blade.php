@@ -32,7 +32,8 @@
         border-radius: 4px;
         cursor: pointer;
     }
-    #TransactionBank {
+    #TransactionBank,
+    #XaPhuongTransaction {
     width: 100%;
     padding: 8px;
     margin-bottom: 16px;
@@ -48,36 +49,36 @@
 
     #TransactionKinhDo,
     #TransactionViDo,
-    #TransactionDiachi,
-    #TransactionPhuong {
+    #TransactionDiachi {
         background-color: #7ef774;
         cursor: not-allowed;
     }
 </style>
   
   <div id="TransactionForm" class="hidden">
-      <form id="TransactionInfoForm">
+      <form method="POST" id="TransactionInfoForm" action="{{ url('create-transaction') }}">
+        @csrf
         <label for="TransactionName">Tên Phòng Giao Dịch:</label>
-        <input type="text" id="TransactionName" name="TransactionName" required>
+        <input type="text" id="TransactionName" name="PGD_Ten" required>
         
         <label for="TransactionDiachi">Địa Chỉ Phòng Giao Dịch:</label>
-        <input type="text" id="TransactionDiachi" name="TransactionDiachi" required readonly>
+        <input type="text" id="TransactionDiachi" name="PGD_DiaChi" required readonly>
         
-        <label for="TransactionKinhDo">Kinh Độ Ngân Hàng:</label>
-        <input type="number" id="TransactionKinhDo" name="TransactionKinhDo" required readonly>
+        <label for="TransactionKinhDo">Kinh Độ Phòng Giao Dịch:</label>
+        <input type="number" id="TransactionKinhDo" name="PGD_KinhDo" required readonly>
   
-        <label for="TransactionViDo">Vĩ Độ Ngân Hàng:</label>
-        <input type="number" id="TransactionViDo" name="TransactionViDo" required readonly>
+        <label for="TransactionViDo">Vĩ Độ Phòng Giao Dịch:</label>
+        <input type="number" id="TransactionViDo" name="PGD_ViDo" required readonly>
   
         <label for="TransactionMoTa">Mô Tả Phòng Giao Dịch:</label>
-        <input type="text" id="TransactionMoTa" name="TransactionMoTa" required readonly>
+        <input type="text" id="TransactionMoTa" name="PGD_MoTa">
 
         <label for="TransactionSDT">SĐT Phòng Giao Dịch:</label>
-        <input type="tel" id="TransactionSDT" name="TransactionSDT" required>
+        <input type="tel" id="TransactionSDT" name="PGD_SDT" required>
         
 
         <label for="TransactionBank">Phòng Giao Dịch của Ngân Hàng:</label>
-            <select id="TransactionBank" name="TransactionBank" required>
+            <select id="TransactionBank" name="PGD_MaNH" required>
                 <option value="">Chọn một phòng giao dịch của ngân hàng</option>
                 @if (isset($nganhangs))
                     @foreach($nganhangs as $nganhang)
@@ -86,8 +87,15 @@
                 @endif
             </select>
 
-        <label for="TransactionPhuong">Phòng Giao Dịch ờ Phường:</label>
-        <input type="text" id="TransactionPhuong" name="TransactionPhuong" required readonly>
+        <label for="XaPhuong">Phòng Giao Dịch ở Phường:</label>
+        <select id="XaPhuongTransaction" name="PGD_MaXP" required>
+            <option value="">Phòng Giao Dịch ở Phường:</option>
+            @if(isset($getXP))
+                @foreach($getXP as $xaphuong)
+                    <option value="{{ $xaphuong->XP_Ma }}" >{{ $xaphuong->XP_Ten }}</option>
+                @endforeach
+            @endif
+        </select>
         
     
         <button type="submit" id="Luutt">Lưu Thông Tin</button>

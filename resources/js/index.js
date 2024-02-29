@@ -49,11 +49,9 @@ menuSidebar.addEventListener("click", () => {
 var bankvido = document.getElementById('bankViDo')
 var bankkinhdo = document.getElementById('bankKinhDo')
 var bankdchi = document.getElementById('bankDiachi')
-var bankPhuong = document.getElementById('bankPhuong')
 var trandchi = document.getElementById('TransactionDiachi')
 var tranvido = document.getElementById('TransactionViDo')
 var trankinhdo = document.getElementById('TransactionKinhDo')
-var transactionphuong = document.getElementById('TransactionPhuong')
 var currentMarker = null;
 
 map.on('click' , function(e) {
@@ -65,9 +63,7 @@ map.on('click' , function(e) {
         .then(data => {
             console.log(data)
             bankdchi.value = data.display_name;
-            bankPhuong.value = data.address.quarter;
             trandchi.value = data.display_name;
-            transactionphuong.value = data.address.quarter;
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -101,6 +97,8 @@ addBankButton.addEventListener('click', function() {
   } else {
     bankForm.classList.add('hidden');
   }
+
+  fetchXaPhuongBankData();
 });
 
 var TransactionForm = document.getElementById('TransactionForm');
@@ -120,7 +118,7 @@ addTransactionButton.addEventListener('click', function() {
   }
 
   fetchNganhangData();
-
+  fetchXaPhuongTransactionData();
 
 });
 
@@ -137,6 +135,42 @@ function fetchNganhangData() {
               var option = document.createElement("option");
               option.value = nganhang.NH_Ma;
               option.text = nganhang.NH_Ten;
+              selectElement.add(option);
+          });
+      })
+      .catch(error => console.error("Lỗi:", error));
+}
+function fetchXaPhuongBankData() {
+  fetch("/get-xp")
+      .then(response => response.json())
+      .then(data => {
+          var selectElement = document.getElementById("XaPhuongBank");
+          selectElement.innerHTML = ""; // Xóa các option hiện có
+          var defaultOption = document.createElement("option");
+          selectElement.add(defaultOption);
+
+          data.forEach(function(xaphuong) {
+              var option = document.createElement("option");
+              option.value = xaphuong.XP_Ma;
+              option.text = xaphuong.XP_Ten;
+              selectElement.add(option);
+          });
+      })
+      .catch(error => console.error("Lỗi:", error));
+}
+function fetchXaPhuongTransactionData() {
+  fetch("/get-xp")
+      .then(response => response.json())
+      .then(data => {
+          var selectElement = document.getElementById("XaPhuongTransaction");
+          selectElement.innerHTML = ""; // Xóa các option hiện có
+          var defaultOption = document.createElement("option");
+          selectElement.add(defaultOption);
+
+          data.forEach(function(xaphuong) {
+              var option = document.createElement("option");
+              option.value = xaphuong.XP_Ma;
+              option.text = xaphuong.XP_Ten;
               selectElement.add(option);
           });
       })

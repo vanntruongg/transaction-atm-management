@@ -14,7 +14,7 @@ class Nganhang extends Model
         'NH_Ma',
         'NH_Ten', 
         'NH_DiaChi', 
-        'NH_SoDienThoai', 
+        'NH_SDT', 
         'NH_KinhDo', 
         'NH_ViDo', 
         'NH_MaXP'];
