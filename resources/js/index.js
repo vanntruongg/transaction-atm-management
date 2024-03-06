@@ -52,6 +52,9 @@ var bankdchi = document.getElementById('bankDiachi')
 var trandchi = document.getElementById('TransactionDiachi')
 var tranvido = document.getElementById('TransactionViDo')
 var trankinhdo = document.getElementById('TransactionKinhDo')
+var atmkinhdo = document.getElementById('ATMKinhDo')
+var atmvido = document.getElementById('ATMViDo')
+var atmdiachi = document.getElementById('ATMDiachi')
 var currentMarker = null;
 
 map.on('click' , function(e) {
@@ -64,6 +67,7 @@ map.on('click' , function(e) {
             console.log(data)
             bankdchi.value = data.display_name;
             trandchi.value = data.display_name;
+            atmdiachi.value = data.display_name;
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -80,6 +84,8 @@ map.on('click' , function(e) {
     bankkinhdo.value = longitude; 
     tranvido.value = latitude;
     trankinhdo.value = longitude;
+    atmvido.value = latitude;
+    atmkinhdo.value = longitude;
 })
 
 var bankForm = document.getElementById('bankForm');
@@ -91,6 +97,9 @@ addBankButton.addEventListener('click', function() {
   if (!TransactionForm.classList.contains('hidden')) {
     TransactionForm.classList.add('hidden');
   }
+  if (!ATMForm.classList.contains('hidden')) {
+    ATMForm.classList.add('hidden');
+  }
   // Nếu form đang ẩn, hiển thị nó; ngược lại, ẩn form đi
   if (bankForm.classList.contains('hidden')) {
     bankForm.classList.remove('hidden');
@@ -101,6 +110,30 @@ addBankButton.addEventListener('click', function() {
   fetchXaPhuongBankData();
 });
 
+var ATMForm = document.getElementById('TruATMForm');
+var addATMButton = document.getElementById('addATMButton');
+
+// Bắt sự kiện click trên nút "Thêm Ngân Hàng"
+addATMButton.addEventListener('click', function() {
+  // Ẩn form phòng giao dịch nếu đang hiển thị
+  if (!TransactionForm.classList.contains('hidden')) {
+    TransactionForm.classList.add('hidden');
+  }
+  if (!bankForm.classList.contains('hidden')) {
+    bankForm.classList.add('hidden');
+  }
+  // Nếu form đang ẩn, hiển thị nó; ngược lại, ẩn form đi
+  if (ATMForm.classList.contains('hidden')) {
+    ATMForm.classList.remove('hidden');
+  } else {
+    ATMForm.classList.add('hidden');
+  }
+
+  fetchXaPhuongATMData();
+  fetchNganhangATMData();
+});
+
+
 var TransactionForm = document.getElementById('TransactionForm');
 var addTransactionButton = document.getElementById('addTransactionButton');
 
@@ -109,6 +142,9 @@ addTransactionButton.addEventListener('click', function() {
   // Ẩn form Ngân Hàng nếu đang hiển thị
   if (!bankForm.classList.contains('hidden')) {
     bankForm.classList.add('hidden');
+  }
+  if (!ATMForm.classList.contains('hidden')) {
+    ATMForm.classList.add('hidden');
   }
   // Nếu form đang ẩn, hiển thị nó; ngược lại, ẩn form đi
   if (TransactionForm.classList.contains('hidden')) {
@@ -140,6 +176,26 @@ function fetchNganhangData() {
       })
       .catch(error => console.error("Lỗi:", error));
 }
+
+function fetchNganhangATMData() {
+  fetch("/get-bank")
+      .then(response => response.json())
+      .then(data => {
+          var selectElement = document.getElementById("ATMNH");
+          selectElement.innerHTML = ""; // Xóa các option hiện có
+          var defaultOption = document.createElement("option");
+          selectElement.add(defaultOption);
+
+          data.forEach(function(nganhang) {
+              var option = document.createElement("option");
+              option.value = nganhang.NH_Ma;
+              option.text = nganhang.NH_Ten;
+              selectElement.add(option);
+          });
+      })
+      .catch(error => console.error("Lỗi:", error));
+}
+
 function fetchXaPhuongBankData() {
   fetch("/get-xp")
       .then(response => response.json())
@@ -163,6 +219,24 @@ function fetchXaPhuongTransactionData() {
       .then(response => response.json())
       .then(data => {
           var selectElement = document.getElementById("XaPhuongTransaction");
+          selectElement.innerHTML = ""; // Xóa các option hiện có
+          var defaultOption = document.createElement("option");
+          selectElement.add(defaultOption);
+
+          data.forEach(function(xaphuong) {
+              var option = document.createElement("option");
+              option.value = xaphuong.XP_Ma;
+              option.text = xaphuong.XP_Ten;
+              selectElement.add(option);
+          });
+      })
+      .catch(error => console.error("Lỗi:", error));
+}
+function fetchXaPhuongATMData() {
+  fetch("/get-xp")
+      .then(response => response.json())
+      .then(data => {
+          var selectElement = document.getElementById("ATMXP");
           selectElement.innerHTML = ""; // Xóa các option hiện có
           var defaultOption = document.createElement("option");
           selectElement.add(defaultOption);
