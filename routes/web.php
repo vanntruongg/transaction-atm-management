@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AddBankController;
 
+use App\Http\Controllers\TestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +27,21 @@ Route::post('create-transaction', [AddBankController::class, 'createTransaction'
 Route::post('create-atm', [AddBankController::class, 'createATM'])->name('createATM');
 
 Route::get('/get-xp', 'App\Http\Controllers\AddBankController@getXP');  
+=======
+// Route::get('product/search-advance', 'ProductController@search');
+// Route::post('product/search-advance', 'ProductController@getProductSearch');
 
+// Route::get('/search', 'HomeController@search');
+// Route::post('/search', 'HomeController@searchFullText')->name('search');
+
+Route::get('/test', [TestController::class, 'index'])->name('test');
+
+Route::get('/testjson', [TestController::class, 'testjson'])->name('testjson');
+
+Route::get('/listbank', [TestController::class, 'testBank'])->name('testBank');
+
+//getListBankAccept
+Route::get('/getListBankAccept/{dichvu}/{idbank}', [TestController::class, 'getListBankAccept'])->name('getListBankAccept');
+
+//getListATMOfBank
+Route::get('/getListATMOfBank/{id}/{dichvu}', [TestController::class, 'getListATMOfBank'])->name('getListATMOfBank');
