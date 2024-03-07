@@ -23,7 +23,8 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").openPopup();
-L.Control.geocoder().addTo(map);
+var geocoder = L.Control.Geocoder.nominatim();
+L.Control.geocoder({ geocoder }).addTo(map);
 
 // menu sidebar
 const menuSidebar = document.getElementById("menu-sidebar");
