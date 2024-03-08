@@ -10,6 +10,18 @@
             @component('components.map')
             @endcomponent
         </div>
+        <div id="addBankLocation" class="">
+            @component('components.addBankLocation')
+            @endcomponent
+        </div>
+        <div id="addTransactionLocation" class="">
+            @component('components.addTransactionLocation')
+            @endcomponent
+        </div>
+        <div id="addATM"class="">
+            @component('components.addATM')
+            @endcomponent
+        </div>
     </main>
 @endsection
 
