@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TruATMController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AddBankController;
 
@@ -19,6 +20,11 @@ use App\Http\Controllers\TestController;
 Route::get('/', function () {
     return view('home');
 });
+// Route::get('/filter', [TruATMController::class, 'getPageFilter']);
+Route::get('/listbank', [TruATMController::class, 'getATM']);
+Route::get('/pagefilter', [TruATMController::class, 'getPageFilter']);
+Route::get('/listpgd', [TruATMController::class, 'getPGD']);
+=======
 
 
 Route::get('/get-bank', 'App\Http\Controllers\AddBankController@getBank' );
