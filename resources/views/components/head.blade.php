@@ -8,5 +8,6 @@
 
         @vite('resources/css/app.css')
         @vite('resources/js/index.js')
+        @vite('resources/js/add.js')
     </head>
     <body class="antialiased h-screen">
