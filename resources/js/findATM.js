@@ -13,18 +13,43 @@ const $$ = document.querySelectorAll.bind(document);
 const inputRange = $('.inputRange')
 const selectBank = $('#selectBank')
 const selectService = $('#selectService')
+const selectRange = $('#selectRange')
 
 
 async function initMap() {
-    fetch('http://127.0.0.1:8000/getInit')
+    fetch('http://127.0.0.1:8000/getdataInit')
     .then((response) => response.json())
     .then((response) => {
-        console.log(response)
+        
+
+        const dataBank = response.dataBank
+        const dichVu = response.dichVu
+        const range = response.range
+
+        const htmlDataBank = dataBank.map(bank => {
+            return `<option value="${bank.NH_Ma}">${bank.NH_Ten}</option>`
+        }).join('')
+
+        const htmlDataService = dichVu.map(dv => {
+            return `<option value="${dv.DV_Ma}">${dv.DV_Ten}</option>`
+        }).join('')
+
+
+
+        selectBank.innerHTML = htmlDataBank
+        selectService.innerHTML = htmlDataService
+        selectRange.max = range
+        
+
+        console.log(response,dataBank, dichVu, range, htmlDataBank);
     })
+    .catch((error) => console.error(error))
+
 }
 
+initMap()
 
-const divElement = document.getElementById("map");
+const divElement = document.getElementById("divMap");
 
 
 //  ctu
@@ -146,8 +171,9 @@ btnSearchATM.addEventListener('click', handleSearchATM)
 //hien thi component search
 
 const btnShowSearch = $('#btnShowSearch')
-const searchBox = $('#searchBox')
+const searchBox = $('#findATM')
 const btnCloseSearchBox = $('#btnCloseSearchBox')
+
 
 btnCloseSearchBox.addEventListener('click', () => {
 
@@ -158,7 +184,7 @@ btnCloseSearchBox.addEventListener('click', () => {
 
 
 btnShowSearch.addEventListener('click', () => {
-
+    console.log(12345)
     searchBox.classList.remove('hidden')
     divElement.classList.add('-z-10')
 })
