@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Nganhang extends Model
+class NganHang extends Model
 {
     protected $table = 'nganhang';
     use HasFactory;
@@ -14,7 +14,7 @@ class Nganhang extends Model
         'NH_Ma',
         'NH_Ten', 
         'NH_DiaChi', 
-        'NH_SDT', 
+        'NH_SoDienThoai', 
         'NH_KinhDo', 
         'NH_ViDo', 
         'NH_MaXP'];

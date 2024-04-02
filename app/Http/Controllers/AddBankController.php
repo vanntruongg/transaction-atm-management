@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Phonggiaodich;
 use Illuminate\Http\Request;
 use App\Models\Nganhang;
+use App\Models\TruATM;
 use App\Models\Xaphuong;
 
 class AddBankController extends Controller
@@ -48,6 +49,21 @@ class AddBankController extends Controller
         $phonggiaodich->PGD_MaNH = $request->PGD_MaNH;
 
         $phonggiaodich->save();
+
+        return redirect('/');
+    }
+
+    public function createATM(Request $request)
+    {
+        $truatm = new TruATM;
+        $truatm->ATM_DiaChi = $request->ATM_DiaChi;
+        $truatm->ATM_KinhDo = $request->ATM_KinhDo;
+        $truatm->ATM_ViDo = $request->ATM_ViDo;
+        $truatm->ATM_MaNH = $request->ATM_MaNH;
+        $truatm->ATM_MaXP = $request->ATM_MaXP;
+        
+
+        $truatm->save();
 
         return redirect('/');
     }
