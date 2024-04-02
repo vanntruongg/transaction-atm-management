@@ -6,26 +6,9 @@ import "leaflet/dist/images/marker-icon.png";
 import "leaflet-control-geocoder";
 import L, { marker } from "leaflet";
 
-// const divElement = document.getElementById("map");
 
-// //  ctu
-// const lat = 10.029939;
-// const lng = 105.76804;
+const divElement = document.getElementById("map");
 
-// const map = L.map(divElement, {
-//     center: [lat, lng],
-//     zoom: 15,
-// });
-
-// L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//     attribution:
-//         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-// }).addTo(map);
-
-// L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").openPopup();
-// L.Control.geocoder().addTo(map);
-
-//lấy id input bank
 var bankvido = document.getElementById("bankViDo");
 var bankkinhdo = document.getElementById("bankKinhDo");
 var bankdchi = document.getElementById("bankDiachi");
@@ -50,6 +33,8 @@ var xaphuongSelecttransaction = document.getElementById("XaPhuongTransaction");
 var xaphuongSelectatm = document.getElementById("ATMXP");
 //vị trí currentmarker
 var currentMarker = null;
+
+
 
 function handleMapClick(e) {
     var latitude = e.latlng.lat;

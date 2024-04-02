@@ -31,4 +31,8 @@
     </div>
 
   </div>
+
+  <div class="mt-10">
+    <button class="px-4 py-2 bg-slate-300 border" id="btnShowSearch">Tìm Kiếm</button>
+  </div>
 </aside>
