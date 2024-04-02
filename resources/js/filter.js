@@ -2,17 +2,17 @@ import "../../node_modules/leaflet/dist/leaflet";
 import "../../node_modules/leaflet/dist/leaflet.css";
 
 import L from "leaflet";
-
-const divElement = document.getElementById("map");
+import map from "./index.js";
+// const divElement = document.getElementById("map");
 
 //  ctu
 const lat = 10.029939;
 const lng = 105.76804;
 
-const map = L.map(divElement, {
-    center: [lat, lng],
-    zoom: 15,
-});
+// const map = L.map(divElement, {
+//     center: [lat, lng],
+//     zoom: 15,
+// });
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
@@ -87,4 +87,22 @@ document.getElementById("pgdButton").addEventListener("click", function() {
     L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").openPopup();
     
 });
+// dropdown
+const atmButton = document.getElementById('atmButton');
+const atmDropdown = document.getElementById('atmDropdown');
 
+atmButton.addEventListener('mouseover', function() {
+    atmDropdown.classList.remove('hidden');
+});
+
+atmDropdown.addEventListener('mouseover', function() {
+    atmDropdown.classList.remove('hidden');
+});
+
+atmButton.addEventListener('mouseout', function() {
+    atmDropdown.classList.add('hidden');
+});
+
+atmDropdown.addEventListener('mouseout', function() {
+    atmDropdown.classList.add('hidden');
+});

@@ -21,3 +21,4 @@ Route::get('/', function () {
 Route::get('/listbank', [TruATMController::class, 'getATM']);
 Route::get('/pagefilter', [TruATMController::class, 'getPageFilter']);
 Route::get('/listpgd', [TruATMController::class, 'getPGD']);
+Route::get('/buttonfilter', [TruATMController::class, 'getallATMPGD']);
