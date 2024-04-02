@@ -1,28 +1,40 @@
-import "../../node_modules/leaflet/dist/leaflet";
+import "leaflet/dist/leaflet";
 import "../../node_modules/leaflet/dist/leaflet.css";
 import 'leaflet.locatecontrol'; // Import plugin
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css'; // Import styles
 import L from "leaflet";
 import 'leaflet-routing-machine';
+import map from './index.js';
 
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+const inputRange = $('.inputRange')
+const selectBank = $('#selectBank')
+const selectService = $('#selectService')
+
+
+async function initMap() {
+    fetch('http://127.0.0.1:8000/getInit')
+    .then((response) => response.json())
+    .then((response) => {
+        console.log(response)
+    })
+}
 
 
 const divElement = document.getElementById("map");
 
-// L.control.locate().addTo(map);
 
 //  ctu
 const lat = 10.029939;
 const lng = 105.76804;
 
-const map = L.map(divElement, {
-    center: [lat, lng],
-    zoom: 15,
-});
+// const map = L.map(divElement, {
+//     center: [lat, lng],
+//     zoom: 15,
+// });
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
@@ -30,19 +42,6 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").openPopup();
-
-
-///khu 1 10.015770249325593, 105.76574656514816
-//khu 2 10.029942338590846, 105.77061485947323
-//khu 3 10.033953731857725, 105.77980042434845
-
-// const latlngs = [[10.015770249325593, 105.76574656514816],[10.029942338590846, 105.77061485947323],[10.033953731857725, 105.77980042434845]]
-
-
-// const polyline = L.polyline(latlngs, {color: 'blue'}).addTo(map)
-
-// map.fitBounds(polyline.getBounds())
-
 
 const iconATMIMG = 'https://www.pngrepo.com/download/270054/atm.png'
 
@@ -72,25 +71,39 @@ async function getDataFromAPI() {
     })
 
 }
-getDataFromAPI() 
+
+//change range
+
+const handleChangeRange = (e) => {
+    e.target.nextSibling.innerHTML = e.target.value
+}
+
+inputRange.addEventListener('change', handleChangeRange)
 
 
-// L.Routing.control({
-//     waypoints: [
-//       L.latLng(10.015770249325593, 105.76574656514816),
-//       L.latLng(10.029942338590846, 105.77061485947323)
-//     ]
-//   }).addTo(map)
+//clear map
 
+const clearMap = () => {
+    map.eachLayer((layer) => {
+        if(layer instanceof L.Marker) 
+            map.removeLayer(layer);
+    })
+
+}
 
 //ngan hang chap nhan
 
 const btnSearchATM = $('#btnSearchATM')
 
 async function handleSearchATM() {
+    let range = inputRange.value
     const atmSelected = $('#selectBank').value
     const selectService = $('#selectService').value
-    const URL = `http://127.0.0.1:8000/getListBankAccept/${selectService}/${atmSelected}`
+    const URL = range == 0?`http://127.0.0.1:8000/getListBankAccept/${selectService}/${atmSelected}`:`http://127.0.0.1:8000/getListBankAccept/${selectService}/${atmSelected}/${range}`
+
+    console.log(inputRange.value,URL)
+
+    clearMap()
 
     fetch(URL)
     .then(response => response.json())
@@ -99,26 +112,58 @@ async function handleSearchATM() {
         response.forEach(item => {
             const idBankAccept = item.NHCN_MaNHCN
             const URLATMOFBANK = `http://127.0.0.1:8000/getListATMOfBank/${idBankAccept}/${selectService}`
-            console.log(idBankAccept,URLATMOFBANK)
+            //console.log(idBankAccept,URLATMOFBANK)
 
             fetch(URLATMOFBANK)
             .then(response => response.json())
             .then(response => {
                 console.log(response)
                 response.forEach(item => {
-                    const lat = item.ATM_KinhDo
-                    const lng = item.ATM_ViDo
+                    const latATM = item.ATM_KinhDo
+                    const lngATM = item.ATM_ViDo
                     const idATM = item.ATM_SoHieu + 'abc'
 
-                    console.log(idATM, lat, lng)
+                    //console.log(idATM, latATM, lngATM)
 
-                    L.marker([lat, lng], {icon: iconATM}).addTo(map).bindPopup(idATM).openPopup()
+                    L.marker([latATM, lngATM], {icon: iconATM}).addTo(map).bindPopup(idATM).openPopup()
+
+                    L.Routing.control({
+                        waypoints: [
+                        L.latLng(lat, lng),
+                        L.latLng(latATM, lngATM)
+                        ],
+                        createMarker: function() { return null; },
+                    }).addTo(map)
                 })
             })
         } )
     })
 
+    searchBox.classList.add('hidden')
+    divElement.classList.remove('-z-10')
 }
 
 btnSearchATM.addEventListener('click', handleSearchATM)
+
+//hien thi component search
+
+const btnShowSearch = $('#btnShowSearch')
+const searchBox = $('#searchBox')
+const btnCloseSearchBox = $('#btnCloseSearchBox')
+
+btnCloseSearchBox.addEventListener('click', () => {
+
+    searchBox.classList.add('hidden')
+    divElement.classList.remove('-z-10')
+})
+
+
+
+btnShowSearch.addEventListener('click', () => {
+
+    searchBox.classList.remove('hidden')
+    divElement.classList.add('-z-10')
+})
+
+
 

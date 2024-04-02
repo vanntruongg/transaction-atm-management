@@ -1,4 +1,7 @@
 @extends('layout.main')
+
+@vite('./resources/js/findATM.js')
+
 @section('content')
     <main class="pt-16 w-full h-full flex">
         <div id="sidebar" class="w-[5%] border left transition-all duration-500">
@@ -9,6 +12,7 @@
             @component('components.map')
             @endcomponent
         </div>
+        @include('components.findATM')
     </main>
 @endsection
 

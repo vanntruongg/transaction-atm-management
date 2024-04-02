@@ -15,18 +15,15 @@ use App\Http\Controllers\TestController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
-Route::get('/test', [TestController::class, 'index'])->name('test');
-
-Route::get('/testjson', [TestController::class, 'testjson'])->name('testjson');
-
-Route::get('/listbank', [TestController::class, 'testBank'])->name('testBank');
+Route::get('/', [TestController::class, 'index'])->name('home');
 
 //getListBankAccept
 Route::get('/getListBankAccept/{dichvu}/{idbank}', [TestController::class, 'getListBankAccept'])->name('getListBankAccept');
+Route::get('/getListBankAccept/{dichvu}/{idbank}/{range}', [TestController::class, 'getListBankAccept1'])->name('getListBankAccept1');
 
 //getListATMOfBank
 Route::get('/getListATMOfBank/{id}/{dichvu}', [TestController::class, 'getListATMOfBank'])->name('getListATMOfBank');

@@ -20,28 +20,15 @@ class TestController extends Controller
         $dichvu = DichVu::all();
 
 
-        return view('test', compact('dataBank', 'dichvu'));
+        return view('home', compact('dataBank', 'dichvu'));
     }
 
-    public function testjson() {
 
-        $id1 = 1;
-        $name1 = 'test1';
-
-        $id2 = 2;
-        $name2 = 'test2';
-
-        $data = array(
-            'id' => $id1,
-            'name' => $name1,
-        );
-
-        return response()->json($data, 200);
-
-    }
-
-    public function testBank() {
-        $data = NganHang::all();
+    public function getListBankAccept1($dichvu, $idbank, $range) {
+        $data = NganHangChapNhan::where('NHCN_MaNH', $idbank)
+        ->where('NHCN_MADV', $dichvu)
+        ->where('nhcn_mucphi', '<=', $range)
+        ->get();
 
         return response()->json($data, 200);
     }
