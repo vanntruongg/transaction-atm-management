@@ -19,7 +19,7 @@ const lng = 105.76804;
 //         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 // }).addTo(map);
 
-L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").openPopup();
+// L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").openPopup();
 
 const pgdIcon = L.icon({
     iconUrl: "/storage/images/pgd_icon.png",

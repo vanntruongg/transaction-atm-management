@@ -16,6 +16,9 @@
 <div id="TransactionForm" class="hidden">
     <form method="POST" id="TransactionInfoForm" action="{{ url('create-transaction') }}">
         @csrf
+
+        <h1 class="text-xl font-bold text-center mb-8 px-4 py-2 bg-blue-500 text-white rounded-lg shadow-lg">Thêm Phòng Giao Dịch</h1>
+
         <label for="TransactionName" class="block mb-2">Tên Phòng Giao Dịch:</label>
         <input type="text" id="TransactionName" name="PGD_Ten" required class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-lg">
 
