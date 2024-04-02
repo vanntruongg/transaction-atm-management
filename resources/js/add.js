@@ -6,6 +6,7 @@ import "leaflet/dist/images/marker-icon.png";
 import "leaflet-control-geocoder";
 import L, { marker } from "leaflet";
 
+
 const divElement = document.getElementById("map");
 
 //  ctu
@@ -26,15 +27,15 @@ L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").open
 L.Control.geocoder().addTo(map);
 
 //lấy id input bank
-var bankvido = document.getElementById('bankViDo')
-var bankkinhdo = document.getElementById('bankKinhDo')
-var bankdchi = document.getElementById('bankDiachi')
-var trandchi = document.getElementById('TransactionDiachi')
-var tranvido = document.getElementById('TransactionViDo')
-var trankinhdo = document.getElementById('TransactionKinhDo')
-var atmkinhdo = document.getElementById('ATMKinhDo')
-var atmvido = document.getElementById('ATMViDo')
-var atmdiachi = document.getElementById('ATMDiachi')
+var bankvido = document.getElementById('bankViDo');
+var bankkinhdo = document.getElementById('bankKinhDo');
+var bankdchi = document.getElementById('bankDiachi');
+var trandchi = document.getElementById('TransactionDiachi');
+var tranvido = document.getElementById('TransactionViDo');
+var trankinhdo = document.getElementById('TransactionKinhDo');
+var atmkinhdo = document.getElementById('ATMKinhDo');
+var atmvido = document.getElementById('ATMViDo');
+var atmdiachi = document.getElementById('ATMDiachi');
 
 //lấy ID form
 var bankForm = document.getElementById('bankForm');
@@ -50,7 +51,6 @@ var xaphuongSelecttransaction = document.getElementById('XaPhuongTransaction');
 var xaphuongSelectatm = document.getElementById('ATMXP');
 //vị trí currentmarker
 var currentMarker = null;
-
 
 
 function handleMapClick(e) {

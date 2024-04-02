@@ -2,6 +2,8 @@
 <div id="TruATMForm" class="hidden">
   <form method="POST" id="ATMInfoForm" action="{{ url('create-atm') }}" class="max-w-2xl mx-auto p-4 bg-white border border-gray-300 rounded-lg shadow-md">
       @csrf
+      <h1 class="text-xl font-bold text-center mb-8 px-4 py-2 bg-blue-500 text-white rounded-lg shadow-lg">Thêm Trụ ATM</h1>
+      
       <label for="ATMDiachi" class="block mb-2">Địa Chỉ Trụ ATM:</label>
       <input type="text" id="ATMDiachi" name="ATM_DiaChi" required readonly class="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg bg-green-200">
       
