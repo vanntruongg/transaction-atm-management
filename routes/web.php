@@ -26,7 +26,6 @@ Route::post('create-bank', [AddBankController::class, 'createBank'])->name('crea
 Route::post('create-transaction', [AddBankController::class, 'createTransaction'])->name('createTransaction');
 
 Route::get('/get-xp', 'App\Http\Controllers\AddBankController@getXP');  
-=======
 // Route::get('product/search-advance', 'ProductController@search');
 // Route::post('product/search-advance', 'ProductController@getProductSearch');
 
