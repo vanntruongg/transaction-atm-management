@@ -19,8 +19,8 @@ class TestController extends Controller
 
         $dichvu = DichVu::all();
 
-
-        return view('home', compact('dataBank', 'dichvu'));
+        $range = NganHangChapNhan::max('nhcn_mucphi');
+        return response()->json(['dataBank' => $dataBank, 'dichVu' => $dichvu, 'range' => $range]);
     }
 
 
