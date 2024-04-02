@@ -52,5 +52,3 @@ menuSidebar.addEventListener("click", () => {
         divMap.classList.remove("w-[80%]");
     }
 });
-
-export default map;
