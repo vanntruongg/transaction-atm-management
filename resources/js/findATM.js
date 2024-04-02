@@ -1,7 +1,7 @@
 import "leaflet/dist/leaflet";
 import "../../node_modules/leaflet/dist/leaflet.css";
-import 'leaflet.locatecontrol'; // Import plugin
-import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css'; // Import styles
+import "leaflet.locatecontrol"; // Import plugin
+import "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; // Import styles
 import L from "leaflet";
 import 'leaflet-routing-machine';
 import map from './index.js';
@@ -49,27 +49,25 @@ var iconATM = L.icon({
     iconUrl: iconATMIMG,
     // shadowUrl: 'leaf-shadow.png',
 
-    iconSize:     [30, 50], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconSize: [30, 50], // size of the icon
+    shadowSize: [50, 64], // size of the shadow
+    iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62], // the same for the shadow
+    popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
 });
 
-
 async function getDataFromAPI() {
-    fetch('http://127.0.0.1:8000/listbank')
-    .then((response) => response.json())
-    .then(response => {
-        //console.log(response)
-        response.forEach(item => {
-            const lat = item.NH_KinhDo
-            const lng = item.NH_ViDo
-            const name = item.NH_Ten
-            L.marker([lat, lng]).addTo(map).bindPopup(name).openPopup();
-        })
-    })
-
+    fetch("http://127.0.0.1:8000/listbank")
+        .then((response) => response.json())
+        .then((response) => {
+            //console.log(response)
+            response.forEach((item) => {
+                const lat = item.NH_KinhDo;
+                const lng = item.NH_ViDo;
+                const name = item.NH_Ten;
+                L.marker([lat, lng]).addTo(map).bindPopup(name).openPopup();
+            });
+        });
 }
 
 //change range
@@ -93,7 +91,7 @@ const clearMap = () => {
 
 //ngan hang chap nhan
 
-const btnSearchATM = $('#btnSearchATM')
+const btnSearchATM = $("#btnSearchATM");
 
 async function handleSearchATM() {
     let range = inputRange.value

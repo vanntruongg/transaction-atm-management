@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\TruATMController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AddBankController;
 
 use App\Http\Controllers\TestController;
 
@@ -15,9 +17,28 @@ use App\Http\Controllers\TestController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
+Route::get('/', function () {
+    return view('home');
+});
+// Route::get('/filter', [TruATMController::class, 'getPageFilter']);
+Route::get('/listbank', [TruATMController::class, 'getATM']);
+Route::get('/pagefilter', [TruATMController::class, 'getPageFilter']);
+Route::get('/listpgd', [TruATMController::class, 'getPGD']);
+
+
+Route::get('/get-bank', 'App\Http\Controllers\AddBankController@getBank' );
+Route::post('/create-bank', [AddBankController::class, 'createBank'])->name('createBank');
+Route::post('/create-transaction', [AddBankController::class, 'createTransaction'])->name('createTransaction');
+Route::post('/create-atm', [AddBankController::class, 'createATM'])->name('createATM');
+
+
+Route::get('/get-xp', 'App\Http\Controllers\AddBankController@getXP');  
+
+// Route::get('product/search-advance', 'ProductController@search');
+// Route::post('product/search-advance', 'ProductController@getProductSearch');
+
+// Route::get('/search', 'HomeController@search');
+// Route::post('/search', 'HomeController@searchFullText')->name('search');
 
 Route::get('/', [TestController::class, 'index'])->name('home');
 
