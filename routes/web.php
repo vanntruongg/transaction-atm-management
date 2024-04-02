@@ -25,6 +25,8 @@ Route::get('/listbank', [TruATMController::class, 'getATM']);
 Route::get('/pagefilter', [TruATMController::class, 'getPageFilter']);
 Route::get('/listpgd', [TruATMController::class, 'getPGD']);
 
+Route::get('/buttonfilter', [TruATMController::class, 'getallATMPGD']);
+
 
 Route::get('/get-bank', 'App\Http\Controllers\AddBankController@getBank' );
 Route::post('/create-bank', [AddBankController::class, 'createBank'])->name('createBank');

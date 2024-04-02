@@ -21,3 +21,4 @@ class NganHang extends Model
 
     public $timestamps = false;
 }
+}
