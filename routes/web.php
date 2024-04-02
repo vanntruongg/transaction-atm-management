@@ -42,7 +42,7 @@ Route::get('/get-xp', 'App\Http\Controllers\AddBankController@getXP');
 // Route::get('/search', 'HomeController@search');
 // Route::post('/search', 'HomeController@searchFullText')->name('search');
 
-Route::get('/', [TestController::class, 'index'])->name('home');
+Route::get('/getdataInit', [TestController::class, 'index'])->name('home');
 
 //getListBankAccept
 Route::get('/getListBankAccept/{dichvu}/{idbank}', [TestController::class, 'getListBankAccept'])->name('getListBankAccept');

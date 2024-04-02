@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class NganHang extends Model
 {
     protected $table = 'nganhang';
-
     use HasFactory;
+    protected $primaryKey = 'NH_Ma';
+    protected $fillable = [
+        'NH_Ma',
+        'NH_Ten', 
+        'NH_DiaChi', 
+        'NH_SoDienThoai', 
+        'NH_KinhDo', 
+        'NH_ViDo', 
+        'NH_MaXP'];
+
+    public $timestamps = false;
+}
 }
