@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class truatm extends Model
+class TruATM extends Model
 {
-    protected $table ='truatm';
-    protected $fillable = [
-        'ATM_DiaChi',
-        'ATM_KinhDo',
-        'ATM_ViDo',
-        'ATM_MaXP',
-        'ATM_NganHang'
-    ];
+    protected $table = 'truatm';
     use HasFactory;
+    protected $primaryKey = 'ATM_SoHieu';
+    protected $fillable = [
+        'ATM_SoHieu',
+        'ATM_DiaChi',
+        'ATM_KinhDo', 
+        'ATM_ViDo', 
+        'ATM_MaNH',
+        'PGD_MaXP'];
 
     public $timestamps = false;
 }

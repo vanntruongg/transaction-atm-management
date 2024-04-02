@@ -2,8 +2,8 @@
 @section('title', 'Trang chủ')
 
 
-@component('components.header')
-@endcomponent
+{{-- @component('components.header')
+@endcomponent --}}
 
 @yield('content')
 
