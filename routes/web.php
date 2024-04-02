@@ -24,7 +24,6 @@ Route::get('/', function () {
 Route::get('/listbank', [TruATMController::class, 'getATM']);
 Route::get('/pagefilter', [TruATMController::class, 'getPageFilter']);
 Route::get('/listpgd', [TruATMController::class, 'getPGD']);
-=======
 
 
 Route::get('/get-bank', 'App\Http\Controllers\AddBankController@getBank' );
