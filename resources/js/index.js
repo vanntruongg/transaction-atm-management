@@ -1,7 +1,5 @@
-import "leaflet/dist/leaflet";
-import "leaflet/dist/leaflet.css";
-import "leaflet-control-geocoder/dist/Control.Geocoder.css";
-import "leaflet/dist/images/marker-icon.png";
+import "../../node_modules/leaflet/dist/leaflet";
+import "../../node_modules/leaflet/dist/leaflet.css";
 
 import "leaflet-control-geocoder";
 import L from "leaflet";
