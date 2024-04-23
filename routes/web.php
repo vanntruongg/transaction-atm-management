@@ -36,13 +36,13 @@ Route::get('/listatm/{id}', [TruATMController::class, 'getATMOfBank']);
 Route::get('/listpgd/{id}', [TruATMController::class, 'getPGDOfBank']);
 
 
-Route::get('/get-bank', 'App\Http\Controllers\AddBankController@getBank' );
+Route::get('/get-bank', [AddBankController::class, 'getBank']);
 Route::post('/create-bank', [AddBankController::class, 'createBank'])->name('createBank');
 Route::post('/create-transaction', [AddBankController::class, 'createTransaction'])->name('createTransaction');
 Route::post('/create-atm', [AddBankController::class, 'createATM'])->name('createATM');
 
 
-Route::get('/get-xp', 'App\Http\Controllers\AddBankController@getXP');  
+Route::get('/get-xp', [AddBankController::class, 'getXP']);  
 
 // Route::get('product/search-advance', 'ProductController@search');
 // Route::post('product/search-advance', 'ProductController@getProductSearch');
@@ -50,7 +50,7 @@ Route::get('/get-xp', 'App\Http\Controllers\AddBankController@getXP');
 // Route::get('/search', 'HomeController@search');
 // Route::post('/search', 'HomeController@searchFullText')->name('search');
 
-Route::get('/', [TestController::class, 'index'])->name('home');
+Route::get('/getdataInit', [TestController::class, 'index'])->name('home');
 
 //getListBankAccept
 Route::get('/getListBankAccept/{dichvu}/{idbank}', [TestController::class, 'getListBankAccept'])->name('getListBankAccept');
@@ -58,3 +58,8 @@ Route::get('/getListBankAccept/{dichvu}/{idbank}/{range}', [TestController::clas
 
 //getListATMOfBank
 Route::get('/getListATMOfBank/{id}/{dichvu}', [TestController::class, 'getListATMOfBank'])->name('getListATMOfBank');
+
+//get PGD
+
+Route::get('/getPGD/{id}', [TestController::class, 'getPGD']);
+

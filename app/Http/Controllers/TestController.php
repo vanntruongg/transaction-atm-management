@@ -10,6 +10,7 @@ use App\Models\NganHang;
 use App\Models\NganHangChapNhan;
 use App\Models\TruATM;
 use App\Models\DichVu;
+use App\Models\PhongGiaoDich;
 
 
 class TestController extends Controller
@@ -19,8 +20,8 @@ class TestController extends Controller
 
         $dichvu = DichVu::all();
 
-
-        return view('home', compact('dataBank', 'dichvu'));
+        $range = NganHangChapNhan::max('nhcn_mucphi');
+        return response()->json(['dataBank' => $dataBank, 'dichVu' => $dichvu, 'range' => $range]);
     }
 
 
@@ -46,10 +47,24 @@ class TestController extends Controller
         ->join('dichvuatm', 'atm_sohieu', '=', 'dvatm_maatm')
         ->where('dichvuatm.dvatm_madv', $dichvu)
         ->get();
-
-
         // dd($data);
 
         return response()->json($data, 200);
+    }
+
+
+
+    public function getPGD($id) {
+
+        $idBank  = (int)$id;
+        
+        if($id == 0) {
+            $listPGD = PhongGiaoDich::all();
+        } else {
+            $listPGD = PhongGiaoDich::where('pgd_manh', $idBank)->get();
+
+        }
+
+        return response()->json(['listPGD' => $listPGD]);
     }
 }

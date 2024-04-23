@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Models\phonggiaodich;
 use App\Models\nganhang;
+use App\Models\TruATM as ModelsTruATM;
 use Illuminate\Support\Facades\DB;
 class TruATMController extends Controller
 {
@@ -39,7 +40,11 @@ class TruATMController extends Controller
 
     public function getATMOfBank($id) {
 
+<<<<<<< HEAD
         $ATMOfBank = truatm::where('atm_manh', $id)->get();
+=======
+        $ATMOfBank = ModelsTruATM::where('atm_manh', $id)->get();
+>>>>>>> baccb0303fb34b26b1a82859981bbee2b761569f
         return response()->json(['ATMOfBank' => $ATMOfBank]);
 
     }
@@ -48,4 +53,8 @@ class TruATMController extends Controller
         $PGDOfBank = phonggiaodich::where('PGD_MaNH', $id)->get();
         return response()->json(['PGDOfBank' => $PGDOfBank]);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> baccb0303fb34b26b1a82859981bbee2b761569f

@@ -1,10 +1,14 @@
 import "../../node_modules/leaflet/dist/leaflet";
+// import "../../node_modules/leaflet-control-geocoder/dist/Control.Geocoder";
+// import "../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine";
 import "../../node_modules/leaflet/dist/leaflet.css";
+import "../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css";
 
 import "leaflet-control-geocoder";
-import L from "leaflet";
+import "leaflet-routing-machine";
 
 const divElement = document.getElementById("map");
+import L from "leaflet";
 
 //  ctu
 const lat = 10.029939;
@@ -22,10 +26,16 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").openPopup();
 
+<<<<<<< HEAD
  
 var geocoder = L.Control.Geocoder.nominatim();
 L.Control.geocoder({ geocoder }).addTo(map);
 
 
 
+=======
+var geocoder = L.Control.Geocoder.nominatim();
+L.Control.geocoder({ geocoder }).addTo(map);
+
+>>>>>>> baccb0303fb34b26b1a82859981bbee2b761569f
 export default map;
