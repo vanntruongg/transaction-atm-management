@@ -24,7 +24,7 @@
         <button id="atmButton" class="border border-blue-500 rounded-md bg-blue-500 text-white px-3 py-2 hover:bg-blue-600 transition-all duration-300 bg-center">
           Trụ ATM
         </button>
-        <button id="atmButton" class="border border-blue-500 rounded-md bg-blue-500 text-white px-3 py-2 mt-2 hover:bg-blue-600 transition-all duration-300 bg-center">
+        <button id="pgdButton" class="border border-blue-500 rounded-md bg-blue-500 text-white px-3 py-2 mt-2 hover:bg-blue-600 transition-all duration-300 bg-center">
         Trụ ATM
         </button>
       </div>
