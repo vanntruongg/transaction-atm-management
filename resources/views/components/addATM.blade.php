@@ -16,11 +16,13 @@
       <label for="ATMNH" class="block mb-2">Trụ ATM của Ngân Hàng:</label>
       <select id="ATMNH" name="ATM_MaNH" required class="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg">
           <option value="">Trụ ATM của ngân hàng</option>
+          
           @if (isset($nganhangs))
               @foreach($nganhangs as $nganhang)
                   <option value="{{ $nganhang->NH_Ma }}">{{ $nganhang->NH_Ten }}</option>
               @endforeach
           @endif
+
       </select>
       
       <label for="ATMXP" class="block mb-2">Trụ ATM ở Phường:</label>

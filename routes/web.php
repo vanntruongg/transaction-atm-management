@@ -20,12 +20,20 @@ use App\Http\Controllers\TestController;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/',[TruATMController::class, 'indexBankPGD'])->name('indexhome');
 // Route::get('/filter', [TruATMController::class, 'getPageFilter']);
 Route::get('/listbank', [TruATMController::class, 'getATM']);
 Route::get('/pagefilter', [TruATMController::class, 'getPageFilter']);
 Route::get('/listpgd', [TruATMController::class, 'getPGD']);
 
-Route::get('/buttonfilter', [TruATMController::class, 'getallATMPGD']);
+//api data base filte
+Route::get('/baseData', [TruATMController::class, 'baseData']);
+Route::get('/filtered-pgd', [TruATMController::class,'filtered-pgd']);
+
+//get list atm of bank
+Route::get('/listatm/{id}', [TruATMController::class, 'getATMOfBank']);
+Route::get('/listpgd/{id}', [TruATMController::class, 'getPGDOfBank']);
 
 
 Route::get('/get-bank', 'App\Http\Controllers\AddBankController@getBank' );

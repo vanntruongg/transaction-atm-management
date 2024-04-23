@@ -9,6 +9,7 @@
         <div id="divMap" class="w-[95%] transition-all duration-200">
             @component('components.map')
             @endcomponent
+           
         </div>
         <div id="addBankLocation" class="">
             @component('components.addBankLocation')
@@ -23,6 +24,7 @@
             @endcomponent
         </div>
     </main>
+   
 @endsection
 
 
