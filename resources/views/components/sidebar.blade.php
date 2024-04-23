@@ -23,7 +23,7 @@
       <div class="absolute bg-white p-2 flex flex-col text-nowrap text-xs rounded-md shadow-sm z-[999] invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 origin-top-left scale-0 group-hover:scale-100">
         <div class="relative group">
           <button id="atmButton" class="border border-blue-500 rounded-md bg-blue-500 text-white px-[42px] py-2 hover:bg-blue-600 transition-all duration-300 bg-center">
-            Trụ ATM
+            Trụ ATM 
           </button>
           <div class="absolute mt-9 left-[148px] rounded-md -top-[44px] bg-white shadow-md py-2 w-80" id="atmDropdown">
             
@@ -39,7 +39,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <div class="mt-10">
