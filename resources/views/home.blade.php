@@ -2,6 +2,7 @@
 @vite('resources/js/filter.js')
 @vite('resources/js/findATM.js')
 @vite('resources/js/add.js')
+
 @section('content')
     <main class="w-full h-full flex">
         <div id="sidebar" class="w-[5%] border left transition-all duration-200">
@@ -26,6 +27,10 @@
         </div>
         <div class="hidden z-10" id="findATM">
             @component('components.findATM')
+            @endcomponent
+        </div>
+        <div class="hidden z-10" id="findPGD">
+            @component('components.findPGD')
             @endcomponent
         </div>
     </main>

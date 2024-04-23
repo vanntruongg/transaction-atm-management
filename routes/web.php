@@ -50,3 +50,8 @@ Route::get('/getListBankAccept/{dichvu}/{idbank}/{range}', [TestController::clas
 
 //getListATMOfBank
 Route::get('/getListATMOfBank/{id}/{dichvu}', [TestController::class, 'getListATMOfBank'])->name('getListATMOfBank');
+
+//get PGD
+
+Route::get('/getPGD/{id}', [TestController::class, 'getPGD']);
+
