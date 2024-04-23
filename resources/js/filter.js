@@ -7,7 +7,6 @@ import L from "leaflet";
 const lat = 10.029939;
 const lng = 105.76804;
 
-
 const pgdIcon = L.icon({
     iconUrl: "/storage/images/pgd_icon.png",
     iconSize: [64, 64],
@@ -75,31 +74,30 @@ document.getElementById("atmButton").addEventListener("click", function () {
         .openPopup();
 });
 //
-document.getElementById("pgdButton").addEventListener("click", function () {
-    clearMap();
-    getPGDFromAPI();
-    L.marker([lat, lng])
-        .addTo(map)
-        .bindPopup("Đại học Cần Thơ khu II")
-        .openPopup();
-});
+// document.getElementById("pgdButton").addEventListener("click", function () {
+//     clearMap();
+//     getPGDFromAPI();
+//     L.marker([lat, lng])
+//         .addTo(map)
+//         .bindPopup("Đại học Cần Thơ khu II")
+//         .openPopup();
+// });
 // dropdown
-const atmButton = document.getElementById('atmButton');
-const atmDropdown = document.getElementById('atmDropdown');
+const atmButton = document.getElementById("atmButton");
+const atmDropdown = document.getElementById("atmDropdown");
 
-atmButton.addEventListener('mouseover', function() {
-    atmDropdown.classList.remove('hidden');
+atmButton.addEventListener("mouseover", function () {
+    atmDropdown.classList.remove("hidden");
 });
 
-atmDropdown.addEventListener('mouseover', function() {
-    atmDropdown.classList.remove('hidden');
-});
+// atmDropdown.addEventListener("mouseover", function () {
+//     atmDropdown.classList.remove("hidden");
+// });
 
-atmButton.addEventListener('mouseout', function() {
-    atmDropdown.classList.add('hidden');
-});
+// atmButton.addEventListener("mouseout", function () {
+//     atmDropdown.classList.add("hidden");
+// });
 
-atmDropdown.addEventListener('mouseout', function() {
-    atmDropdown.classList.add('hidden');
-});
-
+// atmDropdown.addEventListener("mouseout", function () {
+//     atmDropdown.classList.add("hidden");
+// });

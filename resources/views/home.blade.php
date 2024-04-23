@@ -1,6 +1,6 @@
 @extends('layout.main')
 @vite('resources/js/filter.js')
-@vite('resources/js/findATM.js')
+{{-- @vite('resources/js/findATM.js') --}}
 @section('content')
     <main class="w-full h-full flex">
         <div id="sidebar" class="w-[5%] border left transition-all duration-200">

@@ -6,9 +6,6 @@ import "leaflet/dist/images/marker-icon.png";
 import "leaflet-control-geocoder";
 import L, { marker } from "leaflet";
 
-
-const divElement = document.getElementById("map");
-
 var bankvido = document.getElementById("bankViDo");
 var bankkinhdo = document.getElementById("bankKinhDo");
 var bankdchi = document.getElementById("bankDiachi");
@@ -33,8 +30,6 @@ var xaphuongSelecttransaction = document.getElementById("XaPhuongTransaction");
 var xaphuongSelectatm = document.getElementById("ATMXP");
 //vị trí currentmarker
 var currentMarker = null;
-
-
 
 function handleMapClick(e) {
     var latitude = e.latlng.lat;
