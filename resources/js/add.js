@@ -4,14 +4,20 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet/dist/images/marker-icon.png";
 
 import "leaflet-control-geocoder";
-import L, { marker } from "leaflet";
+import L from "leaflet";
+import map from "./index.js";
 
+// L.Control.geocoder().addTo(map);
+
+//lấy id input bank
 var bankvido = document.getElementById("bankViDo");
 var bankkinhdo = document.getElementById("bankKinhDo");
 var bankdchi = document.getElementById("bankDiachi");
+//lấy id input phonggiaodich
 var trandchi = document.getElementById("TransactionDiachi");
 var tranvido = document.getElementById("TransactionViDo");
 var trankinhdo = document.getElementById("TransactionKinhDo");
+//lấy id input ATM
 var atmkinhdo = document.getElementById("ATMKinhDo");
 var atmvido = document.getElementById("ATMViDo");
 var atmdiachi = document.getElementById("ATMDiachi");
@@ -24,6 +30,11 @@ var addBankButton = document.getElementById("addBankButton");
 var addATMButton = document.getElementById("addATMButton");
 var addTransactionButton = document.getElementById("addTransactionButton");
 
+//lấy ID closeForm
+var closeATM = document.getElementById("closeATM");
+var closeBank = document.getElementById("closeBank");
+var closeTransaction = document.getElementById("closeTransaction");
+
 //lấy id xaphuong
 var xaphuongSelectbank = document.getElementById("XaPhuongBank");
 var xaphuongSelecttransaction = document.getElementById("XaPhuongTransaction");
@@ -32,62 +43,67 @@ var xaphuongSelectatm = document.getElementById("ATMXP");
 var currentMarker = null;
 
 function handleMapClick(e) {
-    var latitude = e.latlng.lat;
-    var longitude = e.latlng.lng;
-    fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
-    )
+    const { lat, lng } = e.latlng;
+    const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+
+    fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            bankdchi.value = data.display_name;
-            trandchi.value = data.display_name;
-            atmdiachi.value = data.display_name;
+            const displayName = data.display_name;
+            [bankdchi.value, trandchi.value, atmdiachi.value] = [
+                displayName,
+                displayName,
+                displayName,
+            ];
+            const quarterValue = data.address.quarter;
 
-            if (
-                xaphuongSelectbank &&
-                xaphuongSelecttransaction &&
-                xaphuongSelectatm
-            ) {
-                var quarterValue = data.address.quarter;
-
-                var selects = [
-                    xaphuongSelectbank,
-                    xaphuongSelecttransaction,
-                    xaphuongSelectatm,
-                ];
-                selects.forEach((select) => {
-                    for (var i = 0; i < select.options.length; i++) {
-                        if (select.options[i].text === quarterValue) {
-                            select.value = select.options[i].value;
-                            break;
-                        }
+            const selects = [
+                xaphuongSelectbank,
+                xaphuongSelecttransaction,
+                xaphuongSelectatm,
+            ];
+            selects.forEach((select) => {
+                Array.from(select.options).forEach((option) => {
+                    if (option.text === quarterValue) {
+                        select.value = option.value;
+                        return;
                     }
                 });
-            }
+            });
         })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-        });
-    if (currentMarker) {
-        // Nếu có, xóa marker cũ
-        map.removeLayer(currentMarker);
-    }
+        .catch((error) => console.error("Error fetching data:", error));
 
-    map.setView([latitude, longitude], map.getMaxZoom());
+    if (currentMarker) map.removeLayer(currentMarker);
+    map.flyTo([lat, lng], map.getMaxZoom(), { animate: true, duration: 1 });
 
-    currentMarker = L.marker([latitude, longitude])
+    const customIcon = L.divIcon({
+        className: "custom-icon",
+        html: '<i class="fa-solid fa-map-pin fa-3x"></i>',
+        iconSize: [20, 20],
+        iconAnchor: [10, 35],
+    });
+
+    currentMarker = L.marker([lat, lng], { icon: customIcon })
         .addTo(map)
-        .bindTooltip("Bạn đã chọn vị trí này")
+        .bindTooltip("Bạn đã chọn vị trí này", {
+            permanent: true,
+            className: "custom-tooltip",
+            direction: "top",
+            offset: [0, -30],
+        })
         .openTooltip();
-    bankvido.value = latitude;
-    bankkinhdo.value = longitude;
-    tranvido.value = latitude;
-    trankinhdo.value = longitude;
-    atmvido.value = latitude;
-    atmkinhdo.value = longitude;
+
+    [
+        bankvido.value,
+        bankkinhdo.value,
+        tranvido.value,
+        trankinhdo.value,
+        atmvido.value,
+        atmkinhdo.value,
+    ] = [lat, lng, lat, lng, lat, lng];
 }
 
+// Hàm Đóng Mở form
 function handleFormToggle(form, otherForm1, otherForm2, fetchDataFunction) {
     if (!otherForm1.classList.contains("hidden")) {
         otherForm1.classList.add("hidden");
@@ -98,7 +114,18 @@ function handleFormToggle(form, otherForm1, otherForm2, fetchDataFunction) {
 
     if (form.classList.contains("hidden")) {
         form.classList.remove("hidden");
+        if (currentMarker) {
+            map.removeLayer(currentMarker);
+            currentMarker = null;
+        }
         map.on("click", handleMapClick);
+        form.querySelectorAll("input, select").forEach(function (element) {
+            const defaultText = "Hãy chọn vị trí trên bản đồ";
+            element.value = "";
+            [bankdchi, trandchi, atmdiachi].forEach((input) => {
+                input.value = defaultText;
+            });
+        });
     } else {
         form.classList.add("hidden");
         map.off("click", handleMapClick);
@@ -106,17 +133,7 @@ function handleFormToggle(form, otherForm1, otherForm2, fetchDataFunction) {
             map.removeLayer(currentMarker);
             currentMarker = null;
         }
-        bankdchi.value = "";
-        trandchi.value = "";
-        atmdiachi.value = "";
-        bankvido.value = "";
-        bankkinhdo.value = "";
-        tranvido.value = "";
-        trankinhdo.value = "";
-        atmvido.value = "";
-        atmkinhdo.value = "";
     }
-
     fetchDataFunction();
 }
 
@@ -138,6 +155,7 @@ addTransactionButton.addEventListener("click", function () {
     });
 });
 
+//Lấy Data Ngân Hàng
 function fetchNganhangData(selectElementId) {
     fetch("/get-bank")
         .then((response) => response.json())
@@ -183,7 +201,6 @@ function fetchXaPhuongData(selectElementId) {
         .catch((error) => console.error("Lỗi:", error));
 }
 
-// Sử dụng hàm fetchAndPopulateXaPhuongData để tải dữ liệu và cập nhật select element tương ứng
 function fetchXaPhuongBankData() {
     fetchXaPhuongData("XaPhuongBank");
 }
@@ -195,3 +212,23 @@ function fetchXaPhuongTransactionData() {
 function fetchXaPhuongATMData() {
     fetchXaPhuongData("ATMXP");
 }
+
+//Hàm Đóng Form
+function closeForm(button, form) {
+    button.addEventListener("click", function () {
+        form.classList.add("hidden");
+        map.off("click", handleMapClick);
+        if (currentMarker) {
+            map.removeLayer(currentMarker);
+            currentMarker = null;
+        }
+
+        form.querySelectorAll("input, select").forEach(function (element) {
+            element.value = "";
+        });
+    });
+}
+
+closeForm(closeATM, ATMForm);
+closeForm(closeBank, bankForm);
+closeForm(closeTransaction, TransactionForm);

@@ -55,6 +55,7 @@ class AddBankController extends Controller
 
     public function createATM(Request $request)
     {
+        // dd($request);
         $truatm = new TruATM;
         $truatm->ATM_DiaChi = $request->ATM_DiaChi;
         $truatm->ATM_KinhDo = $request->ATM_KinhDo;

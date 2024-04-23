@@ -96,6 +96,23 @@ atmButton.addEventListener("mouseover", function () {
 
 // atmButton.addEventListener("mouseout", function () {
 //     atmDropdown.classList.add("hidden");
+// const atmButton = document.getElementById('atmButton');
+// const atmDropdown = document.getElementById('atmDropdown');
+
+// atmButton.addEventListener('mouseover', function() {
+//     atmDropdown.classList.remove('hidden');
+// });
+
+// atmDropdown.addEventListener('mouseover', function() {
+//     atmDropdown.classList.remove('hidden');
+// });
+
+// atmButton.addEventListener('mouseout', function() {
+//     atmDropdown.classList.add('hidden');
+// });
+
+// atmDropdown.addEventListener('mouseout', function() {
+//     atmDropdown.classList.add('hidden');
 // });
 
 // atmDropdown.addEventListener("mouseout", function () {
