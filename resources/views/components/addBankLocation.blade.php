@@ -1,7 +1,7 @@
 @vite('resources/js/add.js')
 <style>
   #bankInfoForm {
-          width: 380px; /* Adjusted width */
+          width: 380px; 
           margin: auto;
           padding: 20px;
           background-color: #fff;
@@ -13,8 +13,9 @@
       }
   </style>
 <div id="bankForm" class="hidden">
-    <form method="POST" id="bankInfoForm" action="{{ url('create-bank') }}" >
+    <form method="POST" id="bankInfoForm" action="{{ 'create-bank' }}" >
       @csrf
+      
       <button type="button" id="closeBank" class="bg-white rounded-full text-red-400 hover:text-red-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
         <i class="fa-regular fa-circle-xmark text-2xl"></i>
       </button>

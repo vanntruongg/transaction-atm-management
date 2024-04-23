@@ -13,5 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        '/create-atm',
+        '/create-bank',
+        '/create-transaction'
     ];
 }

@@ -1,5 +1,4 @@
 @vite('resources/js/add.js')
-
 <style>
 #TransactionInfoForm {
         width: 380px;
@@ -14,7 +13,7 @@
     }
 </style>
 <div id="TransactionForm" class="hidden">
-    <form method="POST" id="TransactionInfoForm" action="{{ url('create-transaction') }}">
+    <form method="POST" id="TransactionInfoForm" action="{{ 'create-transaction' }}">
         @csrf
         <button type="button" id="closeTransaction" class="bg-white rounded-full text-red-400 hover:text-red-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
             <i class="fa-regular fa-circle-xmark text-2xl"></i>

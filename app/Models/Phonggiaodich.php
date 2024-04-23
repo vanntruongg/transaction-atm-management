@@ -10,4 +10,6 @@ class PhongGiaoDich extends Model
     protected $table = 'phonggiaodich';
 
     use HasFactory;
+
+    public $timestamps = false;
 }
