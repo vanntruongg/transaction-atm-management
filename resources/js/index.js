@@ -1,6 +1,6 @@
 import "../../node_modules/leaflet/dist/leaflet";
-import "../../node_modules/leaflet-control-geocoder/dist/Control.Geocoder";
-import "../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine";
+// import "../../node_modules/leaflet-control-geocoder/dist/Control.Geocoder";
+// import "../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine";
 import "../../node_modules/leaflet/dist/leaflet.css";
 import "../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css";
 
@@ -28,12 +28,5 @@ L.marker([lat, lng]).addTo(map).bindPopup("Đại học Cần Thơ khu II").open
 
 var geocoder = L.Control.Geocoder.nominatim();
 L.Control.geocoder({ geocoder }).addTo(map);
-
-// menu sidebar
-const menuSidebar = document.getElementById("menu-sidebar");
-const sidebar = document.getElementById("sidebar");
-const divMap = document.getElementById("divMap");
-const openSidebar = document.getElementById("openSidebar");
-const closeSidebar = document.getElementById("closeSidebar");
 
 export default map;

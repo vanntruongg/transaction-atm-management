@@ -24,9 +24,13 @@
         <button id="atmButton" class="border border-blue-500 rounded-md bg-blue-500 text-white px-3 py-2 hover:bg-blue-600 transition-all duration-300 bg-center">
           Trụ ATM
         </button>
+        <div class="absolute mt-9 left-[148px] rounded-md -top-[44px] bg-white shadow-md py-2 w-80" id="atmDropdown"></div>
+
         <button id="pgdButton" class="border border-blue-500 rounded-md bg-blue-500 text-white px-3 py-2 mt-2 hover:bg-blue-600 transition-all duration-300 bg-center">
         Trụ ATM
         </button>
+        <div class="absolute bg-white left-[148px] rounded-md -top-[42px] shadow-md py-2 w-72" id="pgdDropdown"></div>
+
       </div>
     </div>
 
