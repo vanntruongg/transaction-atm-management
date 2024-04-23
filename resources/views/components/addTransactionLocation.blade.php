@@ -2,7 +2,7 @@
 
 <style>
 #TransactionInfoForm {
-        max-width: 600px;
+        width: 380px;
         margin: auto;
         padding: 20px;
         background-color: #fff;

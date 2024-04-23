@@ -1,6 +1,19 @@
 @vite('resources/js/add.js')
+<style>
+    #TruATMForm {
+            width: 380px; /* Adjusted width */
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto; 
+            max-height: 100%; 
+        }
+    </style>
 <div id="TruATMForm" class="hidden">
-  <form method="POST" id="ATMInfoForm" action="{{ url('create-atm') }}" class="max-w-2xl mx-auto p-4 bg-white border border-gray-300 rounded-lg shadow-md">
+  <form method="POST" id="ATMInfoForm" action="{{ url('create-atm') }}" >
       @csrf
       <button type="button" id="closeATM" class="bg-white rounded-full text-red-400 hover:text-red-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
         <i class="fa-regular fa-circle-xmark text-2xl"></i>
